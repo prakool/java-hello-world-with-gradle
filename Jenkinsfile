@@ -16,7 +16,7 @@ pipeline {
                 script {
                    
                    echo 'Build Started'
-                    sh './gradlew clean build'
+                    bat './gradlew.bat clean build'
                     echo 'Build Ended'
                     
                 }
