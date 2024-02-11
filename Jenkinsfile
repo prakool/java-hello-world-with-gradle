@@ -1,25 +1,50 @@
 pipeline {
-     agent any
-     stages {
-         stage('Clean Workspace') {
-             steps {
-                  deleteDir()                  
-             }
-         }
-         stage('Clone Project') {
-             steps {                  
-                  checkout scm                  
-             }
-         }
-         stage('Build') {
-             steps {                  
-                  sh './gradlew clean build'
-             }              
-             post {
-                 always {
-                     jiraSendBuildInfo site: 'bashsquad.atlassian.net'
-                 }
-             }
-         }
-     }
- }
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    
+                    echo 'Checkout1'
+                }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                script {
+                   
+                   echo 'Build1'
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                script {
+                   
+                   echo 'Test1'
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                script {
+                  
+                   echo 'Deploy1'
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline succeeded! Send notifications, etc.'
+        }
+        failure {
+            echo 'Pipeline failed! Send notifications, etc.'
+        }
+    }
+}
