@@ -15,7 +15,10 @@ pipeline {
             steps {
                 script {
                    
-                   echo 'Build1'
+                   echo 'Build Started'
+                    sh './gradlew clean build'
+                    echo 'Build Ended'
+                    
                 }
             }
         }
